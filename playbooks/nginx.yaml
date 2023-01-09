@@ -1,0 +1,20 @@
+---
+- name: to install nginx server on ubuntu-22.04
+  hosts: all
+  become: yes
+  tasks:
+    - name: install Nginx
+      ansible.builtin.apt: 
+        name: nginx
+        update_cache: yes
+        state: present
+---
+- name: to uninstall nginx server on ubuntu-22.04
+  hosts: all
+  become: yes
+  tasks:
+    - name: install Nginx
+      ansible.builtin.apt: 
+        name: nginx
+        update_cache: yes
+        state: absent

@@ -1,0 +1,20 @@
+---
+name: to install apache in ubuntu
+hosts: all
+become: yes
+tasks: 
+  - name: install apache2
+    ansible.builtin.apt: 
+      name: apache2
+      update_cache: yes
+      state: present
+---
+name: to uninstall apache in ubuntu
+hosts: all
+become: yes
+tasks: 
+  - name: install apache2
+    ansible.builtin.apt: 
+      name: apache2
+      update_cache: yes
+      state: absent
