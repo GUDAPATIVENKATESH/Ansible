@@ -7,4 +7,5 @@ group_name=tomcat
 user_name=tomcat
 home_dir=/opt/tomcat
 shell=/bin/false
+tomcat_major_version=10
 tomcat_version=10.1.4

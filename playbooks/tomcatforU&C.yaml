@@ -21,6 +21,11 @@
         state: present
     - name: downloading tomcat & untaring
       ansible.builtin.unarchive:
-        src: "https://www-eu.apache.org/dist/tomcat/tomcat-{{ tomcat_version }}/v{{ tomcat_version }}/bin/apache-tomcat-{{ tomcat_version }}.tar.gz"
+        src: "https://www-eu.apache.org/dist/tomcat/tomcat-{{ tomcat_major_version }}/v{{ tomcat_version }}/bin/apache-tomcat-{{ tomcat_version }}.tar.gz"
         dest: "{{ home_dir }}"
-        remote_src: yes
+    #     remote_src: yes
+    # - name: extract tomcat
+    #   ansible.builtin.unarchive:
+    #     src: "https://www-eu.apache.org/dist/tomcat/tomcat-{{ tomcat_major_version }}/v{{ tomcat_version }}/bin/apache-tomcat-{{ tomcat_version }}.tar.gz"
+    #     remote_src: yes
+    #     dest: "{{ user_home }}"
