@@ -1,4 +1,4 @@
 [Ubuntu]
-localhost
+localhost java_default_version=openjdk-11-jdk
 [CentOS]
-172.31.22.175
+172.31.22.175 java_default_version=java-11-openjdk-devel

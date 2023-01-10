@@ -4,8 +4,8 @@
   become: yes
   tasks:
     - name: java installation
-      ansible.builtin.apt:
-        name: openjdk-11-jdk
+      ansible.builtin.package:
+        name: "{{ java_default_version }}"
         name: tomcat
-        update_cache: yes
         state: present
+      
