@@ -28,6 +28,11 @@
       ansible.builtin.file:
         src: "{{ home_dir }}/apache-tomcat-{{ tomcat_version }}"
         dest: "{{ home_dir }}/latest"
+        state: link
+    - name: change permissions
+      ansible.builtin.file:
+        dest: "{{ home_dir }}"
+        recurse: true
         owner: "{{ owner_name }}"
         group: "{{ group_name }}"
-        state: link
+        state: directory
