@@ -6,6 +6,5 @@
     - name: java installation
       ansible.builtin.package:
         name: "{{ java_default_version }}"
-        name: tomcat
         state: present
       
