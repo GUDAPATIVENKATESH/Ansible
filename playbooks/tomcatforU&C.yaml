@@ -11,4 +11,11 @@
       ansible.builtin.group:
         name: "{{ group_name }}"
         state: present
-      
+    - name: creating user 
+      ansible.builtin.user:
+        name: "{{ user_name }}"
+        create_home: true
+        group: "{{ group_name }}"
+        home: "{{ home_dir }}"
+        shell: "{{ shell }}"
+        state: present
