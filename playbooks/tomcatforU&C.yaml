@@ -22,7 +22,7 @@
     - name: get tomcat stats
       ansible.builtin.stat:
         path: "{{ home_dir }}/latest/bin/startup.sh"
-        register: tomcat_folder
+      register: tomcat_folder
     - name: downloading tomcat & untaring
       ansible.builtin.unarchive:
         src: "https://www-eu.apache.org/dist/tomcat/tomcat-{{ tomcat_major_version }}/v{{ tomcat_version }}/bin/apache-tomcat-{{ tomcat_version }}.tar.gz"
