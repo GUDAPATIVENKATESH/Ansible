@@ -7,4 +7,8 @@
       ansible.builtin.package:
         name: "{{ java_default_version }}"
         state: present
+    - name: creating the tomcat group
+      ansible.builtin.group:
+        name: "{{ group_name }}"
+        state: present
       

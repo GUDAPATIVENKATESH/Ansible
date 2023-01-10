@@ -38,11 +38,11 @@
     #     url: https://www-eu.apache.org/dist/tomcat/tomcat-10/v10.1.4/bin/apache-tomcat-10.1.4.tar.gz
     #     dest: /tmp/apache-tomcat-10.1.4.tar.gz
 ---
-- name: installing tomcat
+- name: uninstalling tomcat
   hosts: all
   become: yes
   tasks:
-    - name: installing java-11
+    - name: uninstalling java-11
       ansible.builtin.apt: 
         name: openjdk-11-jdk
         update_cache: true
