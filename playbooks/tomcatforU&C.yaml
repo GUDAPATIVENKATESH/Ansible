@@ -30,5 +30,4 @@
         dest: "{{ home_dir }}/latest"
         owner: "{{ owner_name }}"
         group: "{{ group_name }}"
-        recurse: yes
         state: link
