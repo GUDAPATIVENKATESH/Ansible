@@ -19,11 +19,16 @@
         home: "{{ home_dir }}"
         shell: "{{ shell }}"
         state: present
+    - name: get tomcat stats
+      ansible.builtin.stat:
+        path: "{{ home_dir }}/apache-tomcat-{{ tomcat_version }}"
+        register: tomcat_folder
     - name: downloading tomcat & untaring
       ansible.builtin.unarchive:
         src: "https://www-eu.apache.org/dist/tomcat/tomcat-{{ tomcat_major_version }}/v{{ tomcat_version }}/bin/apache-tomcat-{{ tomcat_version }}.tar.gz"
         dest: "{{ home_dir }}"
         remote_src: yes
+      when: not tomcat_folder.stat.exists
     - name: creating a symbolic link 
       ansible.builtin.file:
         src: "{{ home_dir }}/apache-tomcat-{{ tomcat_version }}"
@@ -36,8 +41,10 @@
         owner: "{{ owner_name }}"
         group: "{{ group_name }}"
         state: directory
+      when: not tomcat_folder.stat.exists
     - name: add execute permissions to shell files
       ansible.builtin.command: sudo sh -c 'chmod +x /opt/tomcat/latest/bin/*.sh'
+      when: not tomcat_folder.stat.exists
     - name: Copy service file for Ubuntu
       ansible.builtin.copy:
         src: ubuntu.tomcat.service
