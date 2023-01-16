@@ -65,6 +65,7 @@
         dest: " {{ home_dir }}/latest/conf/tomcat-users.xml "
         owner: "{{ owner_name }}"
         group: "{{ group_name }}"
+        remote_src: yes
     - name: coping tomcat manager context file
       ansible.builtin.copy:
         src: manager-context.xml
