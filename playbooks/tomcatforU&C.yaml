@@ -59,6 +59,12 @@
         owner: "{{ owner_name }}"
         group: "{{ group_name }}"
       when: ansible_facts['distribution'] == 'CentOS' 
+    - name: reload daemon and start tomcat
+      ansible.builtin.systemd:
+        name: "{{ tomcat_service_name }}"
+        daemon_reload: yes
+        enabled: yes
+        state: started
     - name: coping tomcat users file
       ansible.builtin.copy:
         src: tomcat-users.xml
@@ -77,9 +83,7 @@
         dest: " {{ home_dir }}/latest/webapps/host-manager/META-INF/context.xml "
         owner: "{{ owner_name }}"
         group: "{{ group_name }}"
-    - name: reload daemon and start tomcat
+    - name: restart tomcat
       ansible.builtin.systemd:
         name: "{{ tomcat_service_name }}"
-        daemon_reload: yes
-        enabled: yes
-        state: started 
+        state: restarted 
