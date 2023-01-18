@@ -86,4 +86,4 @@
     - name: restart tomcat
       ansible.builtin.systemd:
         name: "{{ tomcat_service_name }}"
-        state: restarted 
+        state: restarted  
