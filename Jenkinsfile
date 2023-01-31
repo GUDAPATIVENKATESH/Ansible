@@ -7,14 +7,9 @@ pipeline {
                 branch: 'main'    
             }
         }
-        stage('changing directory') { 
-            steps {
-                sh 'cd ./Documentation/Intergating anssible with jenkins'
-            }
-        }
         stage('Deploy') { 
             steps {
-                sh 'ansible -i hosts ./playbooks/apache2.yml'
+                sh 'ansible -i hosts apache2.yml'
             }
         }
     }
