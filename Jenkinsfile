@@ -3,13 +3,13 @@ pipeline {
     stages {
         stage('clone') { 
             steps {
-                git url: 'https://github.com/GUDAPATIVENKATESH/Documentation.git',
+                git url: 'https://github.com/GUDAPATIVENKATESH/Ansible.git',
                 branch: 'main'    
             }
         }
         stage('Deploy') { 
             steps {
-                sh 'ansible -i hosts apache2.yml'
+                sh 'ansible-playbook -i hosts --syntax-check apache2.yml'
             }
         }
     }
