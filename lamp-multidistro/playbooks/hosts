@@ -1,2 +1,7 @@
 [Ubuntu]
 172.31.17.43
+[Ubuntu:vars]
+apache_package_name=apache2
+[CentOS]
+[CentOS:vars]
+apache_package_name=httpd

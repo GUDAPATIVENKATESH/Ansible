@@ -2,15 +2,18 @@
   become: yes
   hosts: all
   tasks:
-    - name: update cache & install apache2
+    - name: update cache in ubuntu
       ansible.builtin.apt:
-        name: 
-          - apache2
-            
         update_cache: yes
         state: present
+      when: ansible_facts[ansible_distribution] == "Ubuntu"
+    - name: update cache & install apache2
+      ansible.builtin.package:
+        name: 
+          - "{{ apache_package_name }}"
+        state: present
     - name: installing php
-      ansible.builtin.apt:
+      ansible.builtin.package:
         name: 
           - php 
           - libapache2-mod-php 
